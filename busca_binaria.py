@@ -3,7 +3,7 @@ class ListaOrdenada:
     self.dados = []
 
   def inserir(self, pessoa):
-    indice = self.busca_indice_insercao(pessoa.cpf)
+    indice = self.buscar_indice_insercao(pessoa.cpf)
     self.dados.insert(indice, pessoa)
 
   def buscar_indice_insercao(self, cpf):

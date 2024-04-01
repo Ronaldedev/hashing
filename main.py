@@ -40,18 +40,18 @@ def main():
 
     # Inserção de dados (teste de performance)
     for estrutura, data_estrutura in estruturas.items():
-      tempo_insercao = Timer(lambda: data_estrutura.inserir(dado) for dado in dados).timeit(number=1)
+      tempo_insercao = Timer(lambda data_estrutura=data_estrutura: [data_estrutura.inserir(dado) for dado in dados]).timeit(number=1)
       tempo_medio_insercao = tempo_insercao / tamanho_dados
-      print(f"  {estrutura}: {tempo_medio_insercao:.4f} segundos (inserção)")
+      print(f"  {estrutura}: {tempo_medio_insercao:.10f} segundos (inserção)")
 
     # Busca de dados (teste de performance)
     for estrutura, data_estrutura in estruturas.items():
       # Insira todos os dados na estrutura antes de iniciar a medição de busca
       for dado in dados:
         data_estrutura.inserir(dado)
-      tempo_busca = Timer(lambda: data_estrutura.buscar_por_cpf(dado.cpf) for dado in dados).timeit(number=1)
+      tempo_busca = Timer(lambda data_estrutura=data_estrutura: [data_estrutura.buscar_por_cpf(dado.cpf) for dado in dados]).timeit(number=1)
       tempo_medio_busca = tempo_busca / tamanho_dados
-      print(f"  {estrutura}: {tempo_medio_busca:.4f} segundos (busca)")
+      print(f"  {estrutura}: {tempo_medio_busca:.10f} segundos (busca)")
 
     print("---")
 
