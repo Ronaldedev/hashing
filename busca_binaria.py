@@ -11,12 +11,12 @@ class ListaOrdenada:
     while baixo <= alto:
       meio = (baixo + alto) // 2
       if self.dados[meio].cpf == cpf:
-        return meio  # Retorna o índice existente
+        return meio
       elif self.dados[meio].cpf < cpf:
         baixo = meio + 1
       else:
         alto = meio - 1
-    return baixo  # Retorna o índice de inserção
+    return baixo 
 
   def buscar_por_cpf(self, cpf):
     baixo, alto = 0, len(self.dados) - 1
